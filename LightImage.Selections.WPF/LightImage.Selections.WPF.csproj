@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>    
+    <Authors>Ronald van der Velden, Jeroen van der Velden</Authors>
+    <Company>Light Image</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>(c) 2020 Light Image</Copyright>
+    <RepositoryUrl>https://github.com/ronaldvdv/LightImage.Selections</RepositoryUrl>
+    <PackageTags>selections,listbox,treeview,itemscontrol,synchronize,binding,wpf</PackageTags>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <Version>0.1-alpha</Version>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamicData" Version="6.14.14" />
+    <PackageReference Include="ReactiveUI.Events.WPF" Version="11.3.8" />
+    <PackageReference Include="System.Reactive" Version="4.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LightImage.Selections\LightImage.Selections.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

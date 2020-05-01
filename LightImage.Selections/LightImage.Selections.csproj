@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ronald van der Velden, Jeroen van der Velden</Authors>
+    <Company>Light Image</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>(c) 2020 Light Image</Copyright>
+    <RepositoryUrl>https://github.com/ronaldvdv/LightImage.Selections</RepositoryUrl>
+    <PackageTags>selections,listbox,treeview,itemscontrol,synchronize,binding,wpf</PackageTags>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <Version>0.1-alpha</Version>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="DynamicData" Version="6.14.14" />
+    <PackageReference Include="LightImage.Util" Version="1.0.6-alpha" />
+    <PackageReference Include="ReactiveUI" Version="11.3.8" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
