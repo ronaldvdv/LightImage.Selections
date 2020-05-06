@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/ronaldvdv/LightImage.Selections</RepositoryUrl>
     <PackageTags>selections,listbox,treeview,itemscontrol,synchronize,binding,wpf</PackageTags>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <Version>0.1-alpha</Version>
+    <Version>0.2-alpha</Version>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
   
