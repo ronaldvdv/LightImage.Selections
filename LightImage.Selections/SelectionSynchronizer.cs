@@ -1,21 +1,32 @@
-﻿using DynamicData;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reactive.Disposables;
+using DynamicData;
 
 namespace LightImage.Selections
 {
+    /// <summary>
+    /// Synchronization between two selection lists.
+    /// </summary>
+    /// <typeparam name="T">Type of items in each selection list.</typeparam>
     internal class SelectionSynchronizer<T> : IDisposable
     {
-        private readonly CompositeDisposable _disposable = new CompositeDisposable();
+        private readonly CompositeDisposable _disposable;
         private bool _locked = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SelectionSynchronizer{T}"/> class.
+        /// </summary>
+        /// <param name="left">First selection list.</param>
+        /// <param name="right">Second selection list.</param>
         public SelectionSynchronizer(ISelectionList<T> left, ISelectionList<T> right)
         {
-            Bind(left, right).DisposeWith(_disposable);
-            Bind(right, left).DisposeWith(_disposable);
+            _disposable = new CompositeDisposable(
+                Bind(left, right),
+                Bind(right, left));
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             _disposable.Dispose();
@@ -28,18 +39,18 @@ namespace LightImage.Selections
                 {
                     if (!_locked)
                     {
-                        bool hasRefresh = cs.Any(c => c.Reason == ListChangeReason.Refresh);
+                        var hasRefresh = cs.Any(c => c.Reason == ListChangeReason.Refresh);
                         _locked = true;
                         follower.Update(leader.Items.ToArray());
                         if (hasRefresh)
                         {
                             follower.Refresh();
                         }
+
                         _locked = false;
                     }
                 }),
-                leader.OnRefresh.Subscribe(_ => follower.Refresh())
-            );
+                leader.OnRefresh.Subscribe(_ => follower.Refresh()));
         }
     }
 }
